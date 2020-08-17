@@ -33,7 +33,10 @@ Suggests:
     dyntoy,
     testthat
 Remotes:
-    rcannood/monocle3@fix/imports
+    rcannood/monocle3@fix/imports,
+    dynverse/dyntoy,
+    bioc::release/SingleCellExperiment,
+    bioc::release/SummarizedExperiment
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
