@@ -1,5 +1,5 @@
 Package: timonocle3
-Title: A dynverse wrapper of Monocle 3
+Title: A Dynverse Wrapper of Monocle 3
 Version: 2.0.1
 Authors@R: 
     c(person(given = "Robrecht",
