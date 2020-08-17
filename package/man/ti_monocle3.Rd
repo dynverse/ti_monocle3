@@ -30,7 +30,7 @@ Infer a trajectory using Monocle 3
 library(dyntoy)
 library(dynwrap)
 
-dataset <- data <- dyntoy::generate_dataset(
+dataset <- dyntoy::generate_dataset(
   num_cells = 99,
   num_features = 101,
   model = "tree",

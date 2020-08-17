@@ -22,7 +22,7 @@ Run Monocle 3
 }
 \examples{
 library(dyntoy)
-data <- dyntoy::generate_dataset(
+dataset <- dyntoy::generate_dataset(
   num_cells = 99,
   num_features = 101,
   model = "tree",

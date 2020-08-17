@@ -16,15 +16,11 @@
 #' @importFrom Matrix t rowSums
 #' @importFrom SingleCellExperiment reducedDim
 #'
-# # all sorts of imports due to the way monocle3 uses these functions
-#' @importFrom SingleCellExperiment int_elementMetadata int_colData int_metadata
-#' @importFrom SummarizedExperiment elementMetadata rowRanges
-#'
 #' @export
 #'
 #' @examples
 #' library(dyntoy)
-#' data <- dyntoy::generate_dataset(
+#' dataset <- dyntoy::generate_dataset(
 #'   num_cells = 99,
 #'   num_features = 101,
 #'   model = "tree",
@@ -81,7 +77,6 @@ run_fun <- function(expression, parameters, priors, verbose, seed) {
     expression_data = Matrix::t(expression),
     cell_metadata = cell_info,
     gene_metadata = feature_info
-
   )
 
   # perform data preprocessing
@@ -181,7 +176,7 @@ definition <- dynwrap::convert_definition(yaml::read_yaml(system.file("definitio
 #' library(dyntoy)
 #' library(dynwrap)
 #'
-#' dataset <- data <- dyntoy::generate_dataset(
+#' dataset <- dyntoy::generate_dataset(
 #'   num_cells = 99,
 #'   num_features = 101,
 #'   model = "tree",

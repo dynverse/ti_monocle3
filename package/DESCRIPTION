@@ -33,7 +33,7 @@ Suggests:
     dyntoy,
     testthat
 Remotes:
-    cole-trapnell-lab/monocle3
+    rcannood/monocle3@fix/imports
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
