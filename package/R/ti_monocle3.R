@@ -14,20 +14,43 @@
 #' @importFrom monocle3 new_cell_data_set preprocess_cds reduce_dimension cluster_cells learn_graph
 #' @importFrom dynwrap wrap_data add_trajectory add_dimred simplify_trajectory add_timings
 #' @importFrom Matrix t rowSums
+#' @importFrom SingleCellExperiment reducedDim
+#'
+# # all sorts of imports due to the way monocle3 uses these functions
+#' @importFrom SingleCellExperiment int_elementMetadata int_colData int_metadata
+#' @importFrom SummarizedExperiment elementMetadata rowRanges
 #'
 #' @export
 #'
 #' @examples
-#' dataset <- source(system.file("example.sh", package = "timonocle3"))$value
+#' library(dyntoy)
+#' data <- dyntoy::generate_dataset(
+#'   num_cells = 99,
+#'   num_features = 101,
+#'   model = "tree",
+#'   normalise = FALSE
+#' )
 #'
 #' expression <- dataset$expression
-#' parameters <- dynparam::get_defaults(ti_monocle3()$parameters)
+#' parameters <- list(
+#'   num_dim = 50L,
+#'   max_components = 2L,
+#'   reduction_method = "UMAP",
+#'   cluster_method = "leiden",
+#'   k = 20L
+#' )
 #' priors <- dataset$prior_information
 #' verbose <- TRUE
 #' seed <- 1
 #'
 #' output <- run_fun(expression, parameters, priors, verbose, seed)
 run_fun <- function(expression, parameters, priors, verbose, seed) {
+  requireNamespace("igraph")
+
+  # satisfy r cmd check
+  dataset <- feature_name <- feature_id <- from <- to <- cell_id <-
+    index <- percentage <- `.` <- NULL
+
   checkpoints <- list(method_afterpreproc = as.numeric(Sys.time()))
 
   # construct metadata
@@ -155,6 +178,9 @@ definition <- dynwrap::convert_definition(yaml::read_yaml(system.file("definitio
 #' @eval dynwrap::generate_parameter_documentation(definition)
 #'
 #' @examples
+#' library(dyntoy)
+#' library(dynwrap)
+#'
 #' dataset <- data <- dyntoy::generate_dataset(
 #'   num_cells = 99,
 #'   num_features = 101,

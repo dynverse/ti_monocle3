@@ -20,3 +20,26 @@ run_fun(expression, parameters, priors, verbose, seed)
 \description{
 Run Monocle 3
 }
+\examples{
+library(dyntoy)
+data <- dyntoy::generate_dataset(
+  num_cells = 99,
+  num_features = 101,
+  model = "tree",
+  normalise = FALSE
+)
+
+expression <- dataset$expression
+parameters <- list(
+  num_dim = 50L,
+  max_components = 2L,
+  reduction_method = "UMAP",
+  cluster_method = "leiden",
+  k = 20L
+)
+priors <- dataset$prior_information
+verbose <- TRUE
+seed <- 1
+
+output <- run_fun(expression, parameters, priors, verbose, seed)
+}

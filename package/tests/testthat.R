@@ -1,4 +1,4 @@
 library(testthat)
-library(tislingshot)
+library(timonocle3)
 
-test_check("tislingshot")
+test_check("timonocle3")

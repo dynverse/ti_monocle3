@@ -27,6 +27,9 @@ ti_monocle3(
 Infer a trajectory using Monocle 3
 }
 \examples{
+library(dyntoy)
+library(dynwrap)
+
 dataset <- data <- dyntoy::generate_dataset(
   num_cells = 99,
   num_features = 101,
